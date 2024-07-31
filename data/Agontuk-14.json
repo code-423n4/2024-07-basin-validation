@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "Agontuk",
+  "risk": "3",
+  "title": "Direct ERC-20 token transfers can manipulate reserves leading to incorrect calculations via `Stable2::calcLpTokenSupply` and `Stable2::calcReserve`",
+  "issueId": 14,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/14"
+}
