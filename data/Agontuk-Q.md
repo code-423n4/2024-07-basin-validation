@@ -1,4 +1,4 @@
-## Low
+## Low Issues
 
 
 ### [L-01] Misleading modifier name in `WellUpgradeable` contract
@@ -103,9 +103,9 @@ This approach improves code readability, maintainability, and scalability while 
 
 
 
-## Non-Critical
+## Non-Critical Issues
 
-[NC-01] 
+
 
 ### [NC-01] Redundant checks in nested if-else structure leading to inefficiency
 
