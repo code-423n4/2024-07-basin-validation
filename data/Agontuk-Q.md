@@ -1,3 +1,6 @@
+## Low
+
+
 ### [L-01] Misleading modifier name in `WellUpgradeable` contract
 
 The `notDelegatedOrIsMinimalProxy` modifier in the `WellUpgradeable` contract has a misleading name. The current logic ensures that the function is called through a minimal proxy and not through a delegate call. However, the name suggests that the function should allow execution if it is not a delegate call or if it is called through a minimal proxy, which can be confusing for developers and auditors.
@@ -97,3 +100,51 @@ function getRatiosFromPriceLiquidity(uint256 price) external view returns (Price
 ```
 
 This approach improves code readability, maintainability, and scalability while preserving the original functionality.
+
+
+
+## Non-Critical
+
+[NC-01] 
+
+### [NC-01] Redundant checks in nested if-else structure leading to inefficiency
+
+The `getRatiosFromPriceLiquidity()` and `getRatiosFromPriceSwap()` functions contain deeply nested if-else statements with redundant checks. For example, if `price < 0.27702e6` is true, then `price < 0.30624e6` is also true, making the second check redundant within that branch. This redundancy can lead to higher gas costs and reduced readability.
+
+Relevant code:
+```solidity
+function getRatiosFromPriceLiquidity(uint256 price) external pure returns (PriceData memory) {
+    if (price < 1.006758e6) {
+        if (price < 0.885627e6) {
+            if (price < 0.59332e6) {
+                if (price < 0.404944e6) {
+                    if (price < 0.30624e6) {
+                        if (price < 0.27702e6) {
+                            if (price < 0.001083e6) {
+                                revert("LUT: Invalid price");
+                            } else {
+                                return PriceData(0.27702e6, 0, 9.646293093274934449e18, 0.001083e6, 0, 2000e18, 1e18);
+                            }
+                        } else {
+                            return PriceData(0.30624e6, 0, 8.612761690424049377e18, 0.27702e6, 0, 9.646293093274934449e18, 1e18);
+                        }
+                    } else {
+                        // ... more nested if-else statements ...
+                    }
+                } else {
+                    // ... more nested if-else statements ...
+                }
+            } else {
+                // ... more nested if-else statements ...
+            }
+        } else {
+            // ... more nested if-else statements ...
+        }
+    } else {
+        // ... more nested if-else statements ...
+    }
+}
+```
+
+### Recommendation:
+Refactor the logic to eliminate redundant checks, improving readability, maintainability, and gas efficiency. For example, use a single level of if-else statements to ensure each condition is checked only once
