@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "black-wolf",
+  "risk": "3",
+  "title": "High Gas Consumption and Potential Out-of-Gas in calcLpTokenSupply and calcReserve Functions",
+  "issueId": 31,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/31"
+}
