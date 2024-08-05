@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "Egis_Security",
+  "risk": "2",
+  "title": "`WellUpgradeable#_authorizeUpgrade` should check tokens in the new implementation",
+  "issueId": 43,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/43"
+}
