@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "MFaizal14",
+  "risk": "3",
+  "title": "Arbitrary from passed to transferFrom (lor safeTransferFrom)",
+  "issueId": 37,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/37"
+}
