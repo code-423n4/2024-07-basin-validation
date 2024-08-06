@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "FastChecker",
+  "risk": "3",
+  "title": "Incorrect decimal return for token in `Stable2.sol#decodeWellData()` function",
+  "issueId": 48,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/48"
+}
