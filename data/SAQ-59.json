@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "SAQ",
+  "risk": "3",
+  "title": "Division by Zero Vulnerability in `calcLpTokenSupply` Function",
+  "issueId": 59,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/59"
+}
