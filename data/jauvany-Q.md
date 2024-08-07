@@ -44,3 +44,37 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
 ### Tools Used
 
 Manual Analysis
+
+
+# Low Impact Vulnerabilities
+
+# 1: Missing checks for address(0x0) when updating address state variables
+
+## 1: Missing checks for address(0x0) when updating address state variables 
+
+Num of instances: 2
+
+### Findings 
+
+
+<details><summary>Click to show findings</summary>
+
+['[93](https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L93-L96)']
+```solidity
+           function upgradeTo(address newImplementation) public override {
+       _authorizeUpgrade(newImplementation);
+       _upgradeToAndCallUUPS(newImplementation, new bytes(0), false);
+   }
+
+```
+[‘[104](https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L104-L107)’]
+
+```solidity
+   function upgradeToAndCall(address newImplementation, bytes memory data) public payable override {
+       _authorizeUpgrade(newImplementation);
+       _upgradeToAndCallUUPS(newImplementation, data, true);
+   }
+```
+
+
+</details>
