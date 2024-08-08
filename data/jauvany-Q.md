@@ -45,10 +45,43 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
 
 Manual Analysis
 
+## 2: FLOATING PRAGMA SHOULD BE AVOIDED
+
+Vulnerability details
+
+### Context:
+
+### FLOATING PRAGMA SHOULD BE AVOIDED
+
+### Proof of Concept
+
+> ***3 Files, 3 Instances*** 
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L3
+```solidity
+	pragma solidity ^0.8.20;
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L3
+```solidity
+	pragma solidity ^0.8.20;
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/StableLUT/Stable2LUT1.sol#L3
+```solidity
+	pragma solidity ^0.8.20;
+```
+
+### Tools Used
+
+Manual Analysis
+
+### Recommended Mitigation Steps
+
+Lock solidity pragmas
+
 
 # Low Impact Vulnerabilities
-
-# 1: Missing checks for address(0x0) when updating address state variables
 
 ## 1: Missing checks for address(0x0) when updating address state variables 
 
@@ -79,7 +112,7 @@ Num of instances: 2
 
 </details>
 
-## 3: Solidity version 0.8.23 won't work on all chains due to MCOPY
+## 2: Solidity version 0.8.23 won't work on all chains due to MCOPY
 
 Vulnerability details
 
@@ -113,3 +146,4 @@ Manual Analysis
 ### Recommended Mitigation Steps
 
 Consider using an earlier solidity version.
+
