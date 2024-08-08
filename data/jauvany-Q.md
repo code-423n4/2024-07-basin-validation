@@ -81,7 +81,7 @@ Manual Analysis
 
 Lock solidity pragmas
 
-## 2: In functions that accept an address as a parameter, there should be a zero address check to prevent bugs
+## 3: Revert statements within external and public functions can be used to perform DOS attacks
 
 Vulnerability details
 
@@ -173,6 +173,45 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
        }
        revert("did not find convergence"); // Found
    }
+```
+
+### Tools Used
+
+Manual Analysis
+
+## 4: Functions which are either private or internal should have a preceding _ in their name
+
+Vulnerability details
+
+### Context:
+
+Add a preceding underscore to the function name, and take care to refactor where there functions are called
+
+### Proof of Concept
+
+> ***1 File, 3 Instances*** 
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L357-L360
+
+```
+   function getScaledReserves(
+       uint256[] memory reserves,
+       uint256[] memory decimals
+   ) internal pure returns (uint256[] memory scaledReserves) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L375-L379
+```
+   function getBandC(
+       uint256 Ann,
+       uint256 lpTokenSupply,
+       uint256 reserves
+   ) private pure returns (uint256 c, uint256 b) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L387
+```
+   function updateReserve(PriceData memory pd, uint256 reserve) internal pure returns (uint256) {
 ```
 
 ### Tools Used
