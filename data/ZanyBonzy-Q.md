@@ -218,3 +218,114 @@ The if else check can be removed.
 ```
 
 ***
+
+### 6. Amplification coefficient is hardcoded and set as immutable and therefore cannot be changed.
+
+Links to affected code *
+
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L47
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/StableLUT/Stable2LUT1.sol#L20
+
+
+#### Impact
+
+The amplification coefficient is hardcoded as 100 in Stable2LUT1.sol
+```solidity
+    function getAParameter() external pure returns (uint256) {
+        return 100;
+    }
+```
+And is also set as immutable in Stable2.sol, meaning it's set in the constructor and cannot be changed.
+```solidity
+
+    uint256 immutable a;
+```
+
+In StableSwap implementations, the amplification coefficient helps to handle a pool’s slippage and tolerance for imbalance between the assets within it. It can help liquidity providers to deposit assets in the pool by adjusting the trading fees based on the pool's liquidity. 
+
+Not being able to change the coefficient can leave the pool unable to adapt to drastic changes in market conditions inclding increased volatility and variations in trading volume making the pool more unstale. The amplification coefficient helps protect against situations like that, and therefore being able to adjust it to accumulate for these changes is quite important.
+
+#### Recommended Mitigation Steps
+
+I'd recommend introducing an admin function to change the amplification coefficient.
+
+***
+
+
+***
+
+### 7. Potential for precision loss in `getBandC` duue to division before multiplications
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L380-L381
+
+#### Impact
+
+Solidity's integer division truncates, so performing division before multiplication can lead to precision loss. This is important as we're dealing with aprroximate values which need to be as close as possible to the real values.
+
+```solidity
+        c = lpTokenSupply * lpTokenSupply / (reserves * N) * lpTokenSupply * A_PRECISION / (Ann * N);
+        b = reserves + (lpTokenSupply * A_PRECISION / Ann);
+```
+***
+
+
+***
+
+### 8. Unused inheritances can be removed
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L37-L38
+
+#### Impact
+
+The contract doesn't use any nonReentrant or onlyOwner modifiers. They can removed.
+```solidity
+    function init(string memory _name, string memory _symbol) external override reinitializer(2) {
+//...
+        __ReentrancyGuard_init();
+//...
+        __Ownable_init();
+```
+
+***
+
+
+***
+
+### 9. Contract expects ETH but has no way to recover it.
+
+Links to affected code *
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L92-L97
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L107-L107
+#### Impact
+
+`upgradeToAndCall` function is payable, but doesn't seem to transfer ETH anywhere in any of the functions it calls. The contract also has no way to retrieve excess ETH sent, or potentially process refunds. Recommend reanalyzing if this is expected and adding functions to recover ETH to the contract.
+
+```solidity
+    function upgradeToAndCall(address newImplementation, bytes memory data) public payable override {
+        _authorizeUpgrade(newImplementation);
+        _upgradeToAndCallUUPS(newImplementation, data, true);
+    }
+```
+
+For extra context, `upgradeTo` has nearly the same functionality, and is not marked payable, so if ETH is desired, no way to send it.
+
+
+
+```solidity
+     */
+    function upgradeTo(address newImplementation) public override { //upgrades ito new impmentation //@note @qa should be marked payableexects eth???
+        _authorizeUpgrade(newImplementation);
+        _upgradeToAndCallUUPS(newImplementation, new bytes(0), false);
+    }
+
+```
+
+***
