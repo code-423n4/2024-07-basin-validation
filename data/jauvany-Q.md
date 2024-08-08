@@ -393,6 +393,44 @@ contract WellUpgradeable is Well, UUPSUpgradeable, OwnableUpgradeable {
 
 Manual Analysis
 
+## 7: Initialize functions do not emit an event
+
+Vulnerability details
+
+### Context:
+
+Emitting an event within initializer functions in Solidity is a best practice for providing transparency and traceability. Initializer functions set the initial state and values of an upgradeable contract. Emitting an event during initialization allows anyone to verify and audit the initial state of the contract via the transaction logs. This can be particularly useful for verifying the parameters set during initialization, tracking the contract's deployment, and troubleshooting or debugging. Therefore, developers should include an event emission in their initializer functions, providing a clear record of the contract's initialization and enhancing the contract's transparency and security.
+
+
+### Proof of Concept
+
+> ***Num of Instances: 1*** 
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L33
+```solidity
+		function init(string memory _name, string memory _symbol) external override reinitializer(2) {
+    	__ERC20Permit_init(_name);
+    	__ERC20_init(_name, _symbol);
+    	__ReentrancyGuard_init();
+    	__UUPSUpgradeable_init();
+    	__Ownable_init();
+
+    	IERC20[] memory _tokens = tokens();
+    	uint256 tokensLength = _tokens.length;
+    	for (uint256 i; i < tokensLength - 1; ++i) {
+        	for (uint256 j = i + 1; j < tokensLength; ++j) {
+            	if (_tokens[i] == _tokens[j]) {
+                	revert DuplicateTokens(_tokens[i]);
+            	}
+        	}
+    	}
+	}
+```
+
+### Tools Used
+
+Manual Analysis
+
 
 # Low Impact Vulnerabilities
 
