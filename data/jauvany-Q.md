@@ -350,6 +350,48 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
 
 Manual Analysis
 
+## 6: Functions within contracts are not ordered according to the solidity style guide
+
+Vulnerability details
+
+### Context:
+
+The following order should be used within contracts
+
+constructor
+
+receive function (if exists)
+
+fallback function (if exists)
+
+external
+
+public
+
+internal
+
+private
+
+Rearrange the contract functions to fit this ordering
+
+### Proof of Concept
+
+> ***2 Files*** 
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L25
+
+```
+contract Stable2 is ProportionalLPToken2, IBeanstalkWellFunction {internal pure returns (uint256[] memory scaledReserves) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L16 
+```
+contract WellUpgradeable is Well, UUPSUpgradeable, OwnableUpgradeable {
+```
+
+### Tools Used
+
+Manual Analysis
 
 
 # Low Impact Vulnerabilities
