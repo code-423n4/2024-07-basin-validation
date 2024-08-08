@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "Flare",
+  "risk": "2",
+  "title": "Incorrectly checking for `decimal1` with `decimal0`.",
+  "issueId": 107,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/107"
+}
