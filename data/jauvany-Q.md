@@ -219,6 +219,139 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
 Manual Analysis
 
 
+## 5: Contracts should have all public/external functions exposed by interfaces
+
+### Resolution 
+Contracts should expose all public and external functions through interfaces. This practice ensures a clear and consistent definition of how the contract can be interacted with, promoting better transparency and integration.
+
+### Proof of Concept
+
+> ***3 Files, 19 instances***
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L93
+```solidity
+	   function upgradeTo(address newImplementation) public override {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L104
+```
+   function upgradeToAndCall(address newImplementation, bytes memory data) public payable override {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L33
+```
+	function init(string memory _name, string memory _symbol) external override reinitializer(2) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L54
+```
+	function initNoWellToken() external initializer {}
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L118
+
+```
+	function proxiableUUID() external view override notDelegatedOrIsMinimalProxy returns (bytes32) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L122
+```
+	function getImplementation() external view returns (address) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L126
+```
+	function getVersion() external pure virtual returns (uint256) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/WellUpgradeable.sol#L130
+```
+	function getInitializerVersion() external view returns (uint256) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L173-L179
+```solidity
+	function calcReserveAtRatioSwap(
+    	uint256[] memory reserves,
+    	uint256 j,
+    	uint256[] memory ratios,
+    	bytes calldata data
+	) external view returns (uint256 reserve) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L246-L251
+```
+	function calcReserveAtRatioLiquidity(
+    	uint256[] calldata reserves,
+    	uint256 j,
+    	uint256[] calldata ratios,
+    	bytes calldata data
+	) external view returns (uint256 reserve) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L327
+```
+function name() external pure returns (string memory) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L331
+```
+	function symbol() external pure returns (string memory) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L74-L77
+```
+	function calcLpTokenSupply(
+    	uint256[] memory reserves,
+    	bytes memory data
+	) public view returns (uint256 lpTokenSupply) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L114-L119
+```
+	function calcReserve(
+    	uint256[] memory reserves,
+    	uint256 j,
+    	uint256 lpTokenSupply,
+    	bytes memory data
+	) public view returns (uint256 reserve) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L153-L158
+```
+	function calcRate(
+    	uint256[] memory reserves,
+    	uint256 i,
+    	uint256 j,
+    	bytes memory data
+	) public view returns (uint256 rate) {
+```
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L310
+```
+	function decodeWellData(bytes memory data) public view virtual returns (uint256[] memory decimals) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/StableLUT/Stable2LUT1.sol#L19
+```
+	function getAParameter() external pure returns (uint256) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/StableLUT/Stable2LUT1.sol#L27
+```
+	function getRatiosFromPriceLiquidity(uint256 price) external pure returns (PriceData memory) {
+```
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/StableLUT/Stable2LUT1.sol#L740
+```
+	function getRatiosFromPriceSwap(uint256 price) external pure returns (PriceData memory) {
+```
+
+### Tools Used
+
+Manual Analysis
+
+
+
 # Low Impact Vulnerabilities
 
 ## 1: Missing checks for address(0x0) when updating address state variables 
