@@ -431,6 +431,49 @@ https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc9
 
 Manual Analysis
 
+## 8: Empty bytes check is missing
+
+Vulnerability details
+
+### Context:
+
+When developing smart contracts in Solidity, it's crucial to validate the inputs of your functions. This includes ensuring that the bytes parameters are not empty, especially when they represent crucial data such as addresses, identifiers, or raw data that the contract needs to process.
+
+Missing empty bytes checks can lead to unexpected behavior in your contract. For instance, certain operations might fail, produce incorrect results, or consume unnecessary gas when performed with empty bytes. Moreover, missing input validation can potentially expose your contract to malicious activity, including exploitation of unhandled edge cases.
+
+
+### Proof of Concept
+
+> ***Num of Instances: 1*** 
+
+https://github.com/code-423n4/2024-07-basin/blob/7d5aacbb144d0ba0bc358dfde6e0cc913d25310e/src/functions/Stable2.sol#L310C1-L325C6 
+```solidity
+	function decodeWellData(bytes memory data) public view virtual returns (uint256[] memory decimals) {
+    	(uint256 decimal0, uint256 decimal1) = abi.decode(data, (uint256, uint256));
+
+    	// if well data returns 0, assume 18 decimals.
+    	if (decimal0 == 0) {
+        	decimal0 = 18;
+    	}
+    	if (decimal0 == 0) {
+        	decimal1 = 18;
+    	}
+    	if (decimal0 > 18 || decimal1 > 18) revert InvalidTokenDecimals();
+
+    	decimals = new uint256[](2);
+    	decimals[0] = decimal0;
+    	decimals[1] = decimal1;
+	}
+```
+
+### Tools Used
+
+Manual Analysis
+
+### Recommended Mitigation
+
+To mitigate these issues, always validate that bytes parameters are not empty when the logic of your contract requires it.
+
 
 # Low Impact Vulnerabilities
 
