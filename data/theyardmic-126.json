@@ -1,0 +1,8 @@
+{
+  "contest": 417,
+  "handle": "theyardmic",
+  "risk": "2",
+  "title": "Arithmetic Precision Issue: Division Before Multiplication",
+  "issueId": 126,
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/126"
+}
