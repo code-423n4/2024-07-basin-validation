@@ -4,5 +4,7 @@
   "risk": "3",
   "title": " `WellUpgradeable::upgradeTo/upgradeToAndCall` lack access control",
   "issueId": 3,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/3"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/3",
+  "validatedIssueId": 75,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/75"
 }
