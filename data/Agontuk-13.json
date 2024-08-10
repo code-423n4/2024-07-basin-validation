@@ -4,5 +4,7 @@
   "risk": "Q",
   "title": "QA Report",
   "issueId": 13,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/13"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/13",
+  "validatedIssueId": 89,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/89"
 }
