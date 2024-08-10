@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Delegate Call Vulnerability in WellUpgradeable.sol",
   "issueId": 80,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/80"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/80",
+  "validatedIssueId": 44,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/44"
 }
