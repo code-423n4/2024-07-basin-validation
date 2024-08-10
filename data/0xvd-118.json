@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Incorrect Condition Check in `decodeWellData` Function",
   "issueId": 118,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/118"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/118",
+  "validatedIssueId": 28,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/28"
 }
