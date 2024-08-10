@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Missing Access Control in `upgradeTo` Function",
   "issueId": 68,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/68"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/68",
+  "validatedIssueId": 50,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/50"
 }
