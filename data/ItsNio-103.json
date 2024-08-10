@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Most functions of `Stable2.sol` are incompatible with `Well.sol`, allowing malicious users to steal funds.",
   "issueId": 103,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/103"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/103",
+  "validatedIssueId": 12,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/12"
 }
