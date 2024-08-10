@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Insecure Upgrade Authorization in Minimal Proxy Environments",
   "issueId": 61,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/61"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/61",
+  "validatedIssueId": 56,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/56"
 }
