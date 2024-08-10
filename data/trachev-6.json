@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`decodeWellData` may return wrong token decimals",
   "issueId": 6,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/6"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/6",
+  "validatedIssueId": 74,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/74"
 }
