@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "`_authorizeUpgrade` has been implemented incorrectly and will prevent Well upgrades",
   "issueId": 20,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/20"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/20",
+  "validatedIssueId": 71,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/71"
 }
