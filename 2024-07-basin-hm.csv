@@ -1,0 +1,103 @@
+issue,title,primary finding,validator comment,status,root cause (URL),size
+findings-3,The upgradeTo and _upgradeToAndCall functions lack sufficient access control.,validation-70,,Satisfactory,,107
+findings-4,Potential Vulnerability in `WellUpgradeable::_authorizeUpgrade` Function's Authorization Mechanism,findings-4,,Satisfactory,,74
+findings-5,Potential Issue with Aquifer Mapping Update after WellUpgradeable Contract Upgrades,findings-5,,Satisfactory,,85
+findings-6,Potential Decimal Precision Issue in `Stable2::decodeWellData` Function,validation-70,,Satisfactory,,80
+findings-8,Incorrect `token1` Decimal Assignment,validation-70,,Satisfactory,,47
+validation-10,`calcReserve` calculates `b` incorrectly,validation-10,,Satisfactory,,51
+validation-101,Due to no access control on `WellUpgradeable::_authorizeUpgrade()` anyone can change the implementation contract and can destroy the main Proxy contract.,validation-70,,Satisfactory,,97
+validation-102,Incorrect `if` condition is used in the `decodeWellData()` function in `Stable2` contract,validation-73,,Satisfactory,,50
+validation-103,"Most functions of `Stable2.sol` are incompatible with `Well.sol`, allowing malicious users to steal funds.",validation-103,,Satisfactory,,215
+validation-107,Incorrectly checking for `decimal1` with `decimal0`.,validation-73,,Satisfactory,,45
+validation-108,Absence of `onlyOwner` modifier in `upgradeTo` and `upgradeToAndCall` function. ,validation-70,,Satisfactory,,57
+validation-11,Incorrect decimal handling in `Stable2::decodeWellData()` may lead to miscalculations and potential financial losses,validation-73,,Satisfactory,,87
+validation-110,Reserve address validation is incorrect; can lead to Division by Zero Error,validation-110,,Unsatisfactory,,32
+validation-111,[H-1] Incorrect check while decoding decimals of provided pair of tokens,validation-73,,Satisfactory,,43
+validation-115,The `__ReentrancyGuard_init()` function should be called before any other initializations in the `init` function to ensure that reentrancy protection is established as early as possible.,,,Unsatisfactory,,70
+validation-118,Incorrect Condition Check in `decodeWellData` Function,validation-73,,Satisfactory,,52
+validation-119,Divergence between swap and liquidity pricing functions,validation-119,,Satisfactory,,128
+validation-126,Arithmetic Precision Issue: Division Before Multiplication,,,Unsatisfactory,,193
+validation-14,Direct ERC-20 token transfers can manipulate reserves leading to incorrect calculations via `Stable2::calcLpTokenSupply` and `Stable2::calcReserve`,,,Unsatisfactory,,65
+validation-15,Gas Griefing through Unbounded Loops in WellUpgradeable Contract,,,Unsatisfactory,,146
+validation-16,Unrestricted Function Access Leading to Potential Manipulation and DoS Vulnerabilities,,,Unsatisfactory,,148
+validation-17,High Complexity in Price Lookup Functions Due to Deep Nesting,,,Unsatisfactory,,142
+validation-18,Unauthorized Contract Reinitialization Due to Unprotected Initializer Functions,validation-92,,Unsatisfactory,,66
+validation-19,`notDelegatedOrIsMinimalProxy` reverts incorrectly,validation-19,,Satisfactory,,39
+validation-20,`_authorizeUpgrade` has been implemented incorrectly and will prevent Well upgrades,validation-70,,Satisfactory,,62
+validation-21,Lack of Input Validation,validation-21,,Unsatisfactory,,95
+validation-22,Overflow in Calculations,validation-22,,Unsatisfactory,,131
+validation-23, Incorrect Error Handling,validation-73,,Satisfactory,,40
+validation-24,Instant upgrade vulnerability allows permanent DoS and fund lock in Wells,validation-70,,Satisfactory,,103
+validation-25,Adding new variables to multi-level inherited upgradeable contracts may break storage layout,validation-94,,Unsatisfactory,,39
+validation-26,WellUpgradeable inherits from OwnableUpgradeable but misses restricting critical functions to onlyOwner,validation-70,,Satisfactory,,92
+validation-3, `WellUpgradeable::upgradeTo/upgradeToAndCall` lack access control,validation-70,,Satisfactory,,58
+validation-31,High Gas Consumption and Potential Out-of-Gas in calcLpTokenSupply and calcReserve Functions,,,Unsatisfactory,,86
+validation-32,"In the ``Stable2`` contract ``calcLpTokenSupply‍‍`` function, there is a potential integer overflow/underflow vulnerability",validation-22,,Unsatisfactory,,76
+validation-33,Unchecked External Call on `calcRate` function on `Stable2` contract,,,Unsatisfactory,,69
+validation-34,For extreme ratios getRatiosFromPriceSwap will return data for which is impossible to converge into a reserve,validation-34,,Satisfactory,,105
+validation-37,Arbitrary from passed to transferFrom (lor safeTransferFrom),,,Unsatisfactory,,27
+validation-38,unprotected initializer,validation-92,,Unsatisfactory,,26
+validation-40, `calcReserveAtRatioLiquidity` & `calcReserveAtRatioSwap` doesn't normalize result if loop is exited and return 0,validation-49,,Satisfactory,,43
+validation-43,`WellUpgradeable#_authorizeUpgrade` should check tokens in the new implementation,validation-43,,Satisfactory,,58
+validation-44,"Stable2LUT1::getRatiosFromPriceLiquidity - In extreme cases, `updateReserve` will start breaking",validation-44,,Satisfactory,,151
+validation-45,Improper Zero-Value Decimal Handling in the decodeWellData Function,validation-73,,Satisfactory,,120
+validation-46,Failure to Achieve Convergence in Stable2's Iterative Calculations,validation-46,,Satisfactory,,135
+validation-47,Incorrect condition checking handling in `decodeWellData` function,validation-73,,Satisfactory,,63
+validation-48,Incorrect decimal return for token in `Stable2.sol#decodeWellData()` function,validation-73,,Satisfactory,,86
+validation-49,Incorrect decimal handling in Newton estimation mechanism of `calcReserveAtRatioSwap` and `calcReserveAtRatioLiquidity` functions of `Stable2` contract,validation-49,,Satisfactory,,93
+validation-50,"Even though `calcLpTokenSupply()` does not converge, it does not revert.",validation-50,,Satisfactory,,68
+validation-55,pd.currentPrice in calcReserveAtRatioSwap() is not updated correctly.,validation-104,,Satisfactory,,36
+validation-56,Incorrect Access Control in _authorizeUpgrade ,validation-70,,Satisfactory,,74
+validation-57,Incorrect Conditional Check for Decimals Leading to Incorrect Calculations,validation-73,,Satisfactory,,64
+validation-6,`decodeWellData` may return wrong token decimals,validation-73,,Satisfactory,,45
+validation-62,Incorrect Decimal Usage in `decodeWellData` Function Causes Miscalculation in Scaled Reserves,validation-73,,Satisfactory,,94
+validation-64,anyone can change the implementation contract due to no access control .,validation-70,,Satisfactory,,53
+validation-65,`WellUpgradeable` can be upgraded by anyone,validation-70,,Satisfactory,,70
+validation-66,Incorrect decimals check in `decodeWellData` function,validation-73,,Satisfactory,,55
+validation-68,Missing Access Control in `upgradeTo` Function,validation-70,,Satisfactory,,64
+validation-69,Unauthorized Contract Upgrade Vulnerability,validation-70,,Satisfactory,,50
+validation-7,`calcLpTokenSupply` does not revert if a convergence hasn't occurred,validation-50,,Satisfactory,,61
+validation-70,Anyone can upgrade Well's implementation,validation-70,,Satisfactory,,104
+validation-71,Incorrect Decimal Validation in decodeWellData Function Leading to Inaccurate Calculations and Overflows,validation-73,,Satisfactory,,30
+validation-73,Incorrectly assigned `decimal1` parameter upon decoding,validation-73,,Satisfactory,,96
+validation-74,Wrong code,validation-73,,Satisfactory,,33
+validation-75,Contract contains payable functions but no withdraw/sweep function,,,Unsatisfactory,,26
+validation-76,Wrong validation for dividing by zero,validation-110,,Unsatisfactory,,40
+validation-77, Missing `onlyOwner` modifier on `_authorizeUpgrade` allows anyone to change underlying well implementation,validation-70,,Satisfactory,,66
+validation-78,incorrect check in decoding well data via `decodeWellData` can lead to wrong scaling of reserves and wrong calculations,validation-73,,Satisfactory,,65
+validation-8,precision loss,validation-122,,Unsatisfactory,,25
+validation-83,StableSwap pricing for some wells would be wrong,validation-73,,Satisfactory,,121
+validation-84, `getRatiosFromPriceLiquidity` lacks any price equality handling mechanism,,,Unsatisfactory,,43
+validation-86,Incorrect Decimal Checking in the `Stable2::decodeWellData()` function,validation-73,,Satisfactory,,62
+validation-87,Decimal Handling Flaw in decodeWellData Function Leads to Potential Miscalculations,validation-73,,Satisfactory,,79
+validation-89,Incorrect calculations across multiply functions due to wrong decimal assignment can be harnessed by an attacker to steal from the protocol.,validation-73,,Satisfactory,,74
+validation-9,Uninitialized local,,,Unsatisfactory,,27
+validation-90,Incorrect reserve updates for when `targetPrice` is exactly in the middle of high and low price,validation-90,,Satisfactory,,75
+validation-93,Incorrect decimal interpretation in the function `decodeWellData` leads to incorrect results,validation-73,,Satisfactory,,61
+validation-94,No Storage Gap For Upgradeable Contracts (child as well as parent contracts),validation-94,,Unsatisfactory,,74
+validation-61,Insecure Upgrade Authorization in Minimal Proxy Environments,validation-70,,Satisfactory,,22
+validation-63,Flawed Access Control in `notDelegatedOrIsMinimalProxy` Modifier Allows Unauthorized Function Calls,validation-19,,Satisfactory,,28
+validation-122,precision loss due to division before multiplicaton,validation-122,,Unsatisfactory,,30
+validation-92,Unprotected initializer in 'initNoWellToken' function allowing unauthorized reinitialization of the contract,validation-92,,Unsatisfactory,,31
+validation-106,Stable2::decodeWellData() - Incorrect check leads to return of wrong decimal precision of decimal1 inside decimals array,validation-73,,Satisfactory,,37
+validation-82,Lack of Input Sanitization in Stable2LUT1.sol,,,Unsatisfactory,,45
+validation-81,Misuse of UUPS Upgrade Pattern and Minimal Proxies in WellUpgradeable.sol,validation-19,,Satisfactory,,47
+validation-79,Lack of Input Validation in Stable2.sol,validation-21,,Unsatisfactory,,50
+validation-59,Division by Zero Vulnerability in `calcLpTokenSupply` Function,,,Unsatisfactory,,50
+validation-109,"""calcLpTokenSupply"" should revert",validation-50,,Satisfactory,,51
+validation-121,Potential Division by Zero Errors in getBandC Function,,,Unsatisfactory,,59
+validation-100,Potential Inaccurate Reserve Calculations Due To Hardcoded decimals,validation-98,,Satisfactory,,60
+validation-114,Inaccurate Reserve Initialization in `calcReserveAtRatioLiquidity` Function Leads to Suboptimal Swap Pricing,validation-114,,Satisfactory,,63
+validation-80,Delegate Call Vulnerability in WellUpgradeable.sol,validation-70,,Satisfactory,,63
+validation-123,Division by Zero Error in updateReserve Function,validation-110,,Unsatisfactory,,67
+validation-2, Incorrect Decoding Logic in `decodeWellData`function,validation-73,,Satisfactory,,67
+validation-96,Anyone can upgrade the implementation of WellUpgradeable,validation-70,,Satisfactory,,73
+validation-36,Non-compliance with EIP-1822 Standard in `WellUpgradeable` Contract,validation-36,,Satisfactory,,75
+validation-98,Incorrect Rate Calculations Due to Insufficient Decimal Handling,validation-98,,Satisfactory,,81
+validation-91,Inaccurate LP Token Supply Calculation Due to Convergence Issue,validation-91,,Satisfactory,,84
+validation-104,Stale `lp token supply` used causes wrong current price calculations,validation-104,,Satisfactory,,95
+validation-95,Incorrect Rounding Behaviour in calcReserve Function,validation-95,,Satisfactory,,95
+validation-28,Incorrect conditional check in `decodeWellData` function ,validation-73,,Satisfactory,,99
+validation-35,Reserve should be greater than 0 on the calcReserve function in the Stable2 contract,,,Unsatisfactory,,174
+validation-54,Unrestricted Contract Upgrade Mechanism in ``WellUpgradeable`` Allows for Arbitrary Implementation Changes and Potential Fund Drainage,validation-70,,Satisfactory,,184
+validation-30,Unauthorised Upgrade Vulnerability in upgradeTo Function within WellUpgradeable contract,validation-70,,Satisfactory,,319
