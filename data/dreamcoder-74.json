@@ -4,5 +4,7 @@
   "risk": "3",
   "title": "Wrong code",
   "issueId": 74,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/74"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/74",
+  "validatedIssueId": 47,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/47"
 }
