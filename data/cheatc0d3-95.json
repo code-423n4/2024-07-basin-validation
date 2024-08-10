@@ -4,5 +4,7 @@
   "risk": "2",
   "title": "Incorrect Rounding Behaviour in calcReserve Function",
   "issueId": 95,
-  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/95"
+  "issueUrl": "https://github.com/code-423n4/2024-07-basin-validation/issues/95",
+  "validatedIssueId": 14,
+  "validatedIssueUrl": "https://github.com/code-423n4/2024-07-basin-findings/issues/14"
 }
